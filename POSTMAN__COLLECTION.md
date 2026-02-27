@@ -91,7 +91,7 @@ Endpoint:
 POST {{baseUrl}}/api/{{apiVersion}}/Authentication/Login
 
 Body:
-```
+```json
 {
   "email": "{{email}}",
   "password": "{{password}}"
@@ -115,7 +115,7 @@ When the access token expires, use:
 POST {{baseUrl}}/api/{{apiVersion}}/Authentication/Refresh
 
 Body:
-```
+```json
 {
   "email": "{{email}}",
   "jwt": {
@@ -145,7 +145,7 @@ If the `pco-id` header is missing, the request will be rejected.
 ---
 
 ## Minimal Event Payload Example
-```
+```json
 {
   "message_id": "unique-message-id",
   "body": {
