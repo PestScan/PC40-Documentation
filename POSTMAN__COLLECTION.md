@@ -91,12 +91,12 @@ Endpoint:
 POST {{baseUrl}}/api/{{apiVersion}}/Authentication/Login
 
 Body:
-
+```
 {
   "email": "{{email}}",
   "password": "{{password}}"
 }
-
+```
 Success Response:
 
 The API returns:
@@ -115,7 +115,7 @@ When the access token expires, use:
 POST {{baseUrl}}/api/{{apiVersion}}/Authentication/Refresh
 
 Body:
-
+```
 {
   "email": "{{email}}",
   "jwt": {
@@ -123,7 +123,7 @@ Body:
     "refreshToken": "{{refreshToken}}"
   }
 }
-
+```
 This returns a new access token and refresh token.
 
 ---
@@ -145,7 +145,7 @@ If the `pco-id` header is missing, the request will be rejected.
 ---
 
 ## Minimal Event Payload Example
-
+```
 {
   "message_id": "unique-message-id",
   "body": {
@@ -158,7 +158,7 @@ If the `pco-id` header is missing, the request will be rejected.
     ]
   }
 }
-
+```
 Minimum required fields:
 
 Root level:
