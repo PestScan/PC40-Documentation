@@ -120,7 +120,7 @@ Common error `400`:
 
 - Method: `POST`
 - Path: `/api/v1.0/Event`
-- Auth required: `Yes` (`Admin` or `Verified` role)
+- Auth required: `Yes`
 - Required header: `pco-id: <string>`
 
 Headers:
