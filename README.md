@@ -26,6 +26,7 @@ Authorization: Bearer <access_token>
 ```
 
 - Token flow:
+
 1. Call `POST /Authentication/Login`
 2. Use `body.accessToken` for protected endpoints
 3. Refresh with `POST /Authentication/Refresh` when needed
@@ -42,8 +43,12 @@ Request body:
 
 ```json
 {
-  "email": "user@example.com",
-  "password": "your-password"
+	"message_id": "string",
+	"date": "2026-03-11T13:39:00.943Z",
+	"body": {
+		"email": "user@example.com",
+		"password": "string"
+	}
 }
 ```
 
@@ -51,13 +56,13 @@ Success response `200`:
 
 ```json
 {
-  "message_id": "f3a84b8d-9e54-4b89-9d95-c9348807e55d",
-  "date": "2026-02-19T13:45:00Z",
-  "body": {
-    "accessToken": "<jwt-access-token>",
-    "refreshToken": "<jwt-refresh-token>"
-  },
-  "is_successful": true
+	"message_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+	"date": "2026-03-11T13:39:00.960Z",
+	"body": {
+		"accessToken": "string",
+		"refreshToken": "string"
+	},
+	"is_successful": true
 }
 ```
 
@@ -65,14 +70,15 @@ Common error `400`:
 
 ```json
 {
-  "message_id": "...",
-  "date": "...",
-  "is_successful": false,
-  "error": {
-    "message": "Email or password incorrect.",
-    "code": "1",
-    "details": "The email or password provided is incorrect."
-  }
+	"message_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+	"date": "2026-03-11T13:39:00.962Z",
+	"body": "string",
+	"is_successful": true,
+	"error": {
+		"message": "string",
+		"code": "string",
+		"details": "string"
+	}
 }
 ```
 
@@ -91,28 +97,42 @@ Request body:
 
 ```json
 {
-  "email": "user@example.com",
-  "jwt": {
-    "accessToken": "<previous-access-token>",
-    "refreshToken": "<current-refresh-token>"
-  }
+	"message_id": "string",
+	"date": "2026-03-11T13:39:00.943Z",
+	"body": {
+		"email": "user@example.com",
+		"password": "string"
+	}
 }
 ```
 
-Success response `200`: same shape as login (`JwtSuccessResponse`).
+Success response `200`:
+
+```json
+{
+	"message_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+	"date": "2026-03-11T13:40:53.404Z",
+	"body": {
+		"accessToken": "string",
+		"refreshToken": "string"
+	},
+	"is_successful": true
+}
+```
 
 Common error `400`:
 
 ```json
 {
-  "message_id": "...",
-  "date": "...",
-  "is_successful": false,
-  "error": {
-    "message": "Wrong email or refreshToken.",
-    "code": "3",
-    "details": "The email or refresh token provided is incorrect."
-  }
+	"message_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+	"date": "2026-03-11T13:40:53.405Z",
+	"body": "string",
+	"is_successful": true,
+	"error": {
+		"message": "string",
+		"code": "string",
+		"details": "string"
+	}
 }
 ```
 
@@ -144,16 +164,16 @@ Minimal request body:
 
 ```json
 {
-  "message_id": "8890fdf8-e31d-4c6a-80d0-84fee8b1627d",
-  "body": {
-    "events": [
-      {
-        "event_id": "evt-001",
-        "duid": "device-123",
-        "event_type": 901
-      }
-    ]
-  }
+	"message_id": "8890fdf8-e31d-4c6a-80d0-84fee8b1627d",
+	"body": {
+		"events": [
+			{
+				"event_id": "evt-001",
+				"duid": "device-123",
+				"event_type": 901
+			}
+		]
+	}
 }
 ```
 
@@ -161,50 +181,50 @@ Full request body example:
 
 ```json
 {
-  "message_id": "c6d8e843-9789-4d8c-af18-3fe4fb0ef30f",
-  "date": "2026-02-19T13:45:00Z",
-  "body": {
-    "events": [
-      {
-        "event_id": "evt-001",
-        "duid": "device-123",
-        "vendor_code": "vendor-a",
-        "date": "2026-02-19T13:40:00Z",
-        "status": 1,
-        "battery_level": 91.5,
-        "signal_intensity": "-68dBm",
-        "event_type": 901,
-        "location_id": "loc-22",
-        "message": "Heartbeat",
-        "attachments": [
-          {
-            "mime_type": "image/jpeg",
-            "base64": "<base64-data>"
-          }
-        ],
-        "common_attributes": {
-          "temprature": 21.6,
-          "temprature_uom": 1,
-          "molecules": [
-            {
-              "molecule_id": 10,
-              "molecule_value": 22,
-              "molecule_uom": 1
-            }
-          ],
-          "species_found": [
-            {
-              "quantity": 2,
-              "species_id": 7
-            }
-          ]
-        },
-        "unknown_attributes": {
-          "any_key": "any_value"
-        }
-      }
-    ]
-  }
+	"message_id": "c6d8e843-9789-4d8c-af18-3fe4fb0ef30f",
+	"date": "2026-02-19T13:45:00Z",
+	"body": {
+		"events": [
+			{
+				"event_id": "evt-001",
+				"duid": "device-123",
+				"vendor_code": "vendor-a",
+				"date": "2026-02-19T13:40:00Z",
+				"status": 1,
+				"battery_level": 91.5,
+				"signal_intensity": "-68dBm",
+				"event_type": 901,
+				"location_id": "loc-22",
+				"message": "Heartbeat",
+				"attachments": [
+					{
+						"mime_type": "image/jpeg",
+						"base64": "<base64-data>"
+					}
+				],
+				"common_attributes": {
+					"temprature": 21.6,
+					"temprature_uom": 1,
+					"molecules": [
+						{
+							"molecule_id": 10,
+							"molecule_value": 22,
+							"molecule_uom": 1
+						}
+					],
+					"species_found": [
+						{
+							"quantity": 2,
+							"species_id": 7
+						}
+					]
+				},
+				"unknown_attributes": {
+					"any_key": "any_value"
+				}
+			}
+		]
+	}
 }
 ```
 
@@ -212,23 +232,23 @@ Success response `200`:
 
 ```json
 {
-  "message_id": "...",
-  "date": "...",
-  "body": {
-    "message": "Event(s) stored.",
-    "event": {
-      "message_id": "...",
-      "date": "...",
-      "body": {
-        "events": [
-          {
-            "event_id": "evt-001"
-          }
-        ]
-      }
-    }
-  },
-  "is_successful": true
+	"message_id": "...",
+	"date": "...",
+	"body": {
+		"message": "Event(s) stored.",
+		"event": {
+			"message_id": "...",
+			"date": "...",
+			"body": {
+				"events": [
+					{
+						"event_id": "evt-001"
+					}
+				]
+			}
+		}
+	},
+	"is_successful": true
 }
 ```
 
