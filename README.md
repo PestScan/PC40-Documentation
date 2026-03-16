@@ -46,7 +46,7 @@ Request body:
 	"message_id": "string",
 	"date": "2026-03-11T13:39:00.943Z",
 	"body": {
-		"email": "user@example.com",
+		"username": "user@example.com",
 		"password": "string"
 	}
 }
@@ -84,24 +84,24 @@ Common error `400`:
 
 Notes:
 
-- Email is normalized to lowercase on login.
+- Username should contain the user's email address and is normalized to lowercase on login.
 - Unverified users are rejected with code `2`.
 
 ## 2) Refresh Token
 
 - Method: `POST`
 - Path: `/api/v1.0/Authentication/Refresh`
-- Auth required: `No` (requires valid email + refresh token pair)
+- Auth required: `No` (requires valid access token + refresh token pair)
 
 Request body:
 
 ```json
 {
 	"message_id": "string",
-	"date": "2026-03-11T13:39:00.943Z",
+	"date": "2026-03-16T13:49:01.685Z",
 	"body": {
-		"email": "user@example.com",
-		"password": "string"
+		"accessToken": "string",
+		"refreshToken": "string"
 	}
 }
 ```
